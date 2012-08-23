@@ -19,6 +19,13 @@ by Manic <http://tech.manic.tw>
       ....
     end
 
+### Configure extra\_attributes in you config/application.rb
+
+    require File.expand_path('../boot', __FILE__)
+
+    require 'rails/all'
+    require 'extra_attribute' # Add this line to enable
+
 ### Configure extra\_attributes in your model
 
     class Person < ActiveRecord::Base
