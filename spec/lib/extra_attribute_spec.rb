@@ -56,4 +56,43 @@ describe ExtraAttribute do
       end
     end
   end
+
+  describe "A custom attribute with another name" do
+    describe "John is a Man" do
+      before( :each ) do
+        @man = Man.new
+      end
+      it "who knows his name" do
+        @man.name = 'John'
+        @man.name.should eql('John')
+      end
+
+      it "who can change his name" do
+        @man.name = 'John'
+        @man.name = 'Joe'
+        @man.name.should eql('Joe')
+      end
+    end
+
+    describe "John is a Man whose name is changed" do
+      before( :each ) do
+        @man = Man.create(:name => "John")
+      end
+
+      it "who changes his name but not save." do
+        @man.name = 'Koh'
+        @man.name.should eql('Koh')
+        @man.reload
+        @man.name.should eql('John')
+      end
+
+      it "who changes his name and saved." do
+        @man.name = 'Koh'
+        @man.name.should eql('Koh')
+        @man.save
+        @man.reload
+        @man.name.should eql('Koh')
+      end
+    end
+  end
 end

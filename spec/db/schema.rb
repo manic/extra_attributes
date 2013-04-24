@@ -8,6 +8,13 @@ ActiveRecord::Schema.define do
     t.datetime 'updated_at'
   end
 
+  create_table 'men', :force => true do |t|
+    t.string   'age'
+    t.text     'properties'
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
+  end
+
   create_table 'children', :force => true do |t|
     t.string   'name'
     t.belongs_to :person
